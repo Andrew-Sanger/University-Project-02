@@ -30,39 +30,37 @@ You are required to write a class named Patient to model the details of a patien
 
 The design and functionality for this Patient class will be discussed below and you must adhere to this class design / functional specification - **no changes to this design are permitted unless a specific clarification or correction is made by the instructor, as part of this task is being able to understand and follow a design specification that you have been given.**
 
-1- Define private instance variables to store basic Patient record details: the patient number (String) patient name (String), patient status (a char), procedure date (String), the procedure type (an int), patient notes (a String that will initially be a description of the patient’s injury, and which will subsequently have details of procedures that have been performed on the Patient appended to it), the total procedure time (an int) and the doctor name (a String). (4 marks)
+1. Define private instance variables to store basic Patient record details: the patient number (String) patient name (String), patient status (a char), procedure date (String), the procedure type (an int), patient notes (a String that will initially be a description of the patient’s injury, and which will subsequently have details of procedures that have been performed on the Patient appended to it), the total procedure time (an int) and the doctor name (a String). (4 marks)
 
-2- Define constants representing the hourly charges for exploratory procedures ($400), reconstructive procedures ($800) and follow-up procedures ($200). (3 marks)
+2. Define constants representing the hourly charges for exploratory procedures ($400), reconstructive procedures ($800) and follow-up procedures ($200). (3 marks)
 
-3- Provide a constructor for the class that accepts the patient number (a String), patient name (a String), procedure date (a String in the format dd/mm/yy), procedure type (an int), the injury description (a String) and the doctor name of the physician who is administering the patient’s treatment. This constructor should initialise the instance variables with the corresponding parameter values that have been passed in - it should also initialise the patient notes instance variable to the injury description that was passed in initially and initialise the patient status instance variable to ‘S’ (indicating that the new patient has had a procedure Scheduled). (4 marks)
+3. Provide a constructor for the class that accepts the patient number (a String), patient name (a String), procedure date (a String in the format dd/mm/yy), procedure type (an int), the injury description (a String) and the doctor name of the physician who is administering the patient’s treatment. This constructor should initialise the instance variables with the corresponding parameter values that have been passed in - it should also initialise the patient notes instance variable to the injury description that was passed in initially and initialise the patient status instance variable to ‘S’ (indicating that the new patient has had a procedure Scheduled). (4 marks)
 
 > public Patient (String patientNo, String patientName, String procedureDate, int procedureType, String injuryDescription, String doctorName)
 
-4- Implement accessors for the patient number, patient name, procedure date, patient notes and doctor name instance variables. (5 marks)
+4. Implement accessors for the patient number, patient name, procedure date, patient notes and doctor name instance variables. (5 marks)
 
-5- Implement a method public double calculateInvoiceCharge(), which calculates and returns the total charge for services rendered by the clinic - ie. total procedure hours * the applicable hourly charge (which is based on the procedure type). (5 marks)
+5. Implement a method public double calculateInvoiceCharge(), which calculates and returns the total charge for services rendered by the clinic - ie. total procedure hours * the applicable hourly charge (which is based on the procedure type). (5 marks)
 
-6- Implement a method public boolean admitPatient(), which records when a Patient has been admitted to the clinic for a procedure. This method should start by checking to see if the patient status is not currently ‘S’ (Scheduled) - if that is the case then a false value should be returned, otherwise the patient status should be updated to ‘A’ (Admitted) and a true value should be returned. (4 marks)
+6. Implement a method public boolean admitPatient(), which records when a Patient has been admitted to the clinic for a procedure. This method should start by checking to see if the patient status is not currently ‘S’ (Scheduled) - if that is the case then a false value should be returned, otherwise the patient status should be updated to ‘A’ (Admitted) and a true value should be returned. (4 marks)
 
-7- Implement a method public boolean recordProcedure(String procedureNotes, int procedureLength), which records details of a procedure that has been performed on a Patient. This method should start by checking to see if the patient status is not currently ‘A’ (Scheduled) 'A' (Admitted) or ‘R’ (Recovery) - if that is the case then a false value should be returned, otherwise the patient details should be updated to reflect the performing of the procedure by doing the following: (8 marks)
+7. Implement a method public boolean recordProcedure(String procedureNotes, int procedureLength), which records details of a procedure that has been performed on a Patient. This method should start by checking to see if the patient status is not currently ‘A’ (Scheduled) 'A' (Admitted) or ‘R’ (Recovery) - if that is the case then a false value should be returned, otherwise the patient details should be updated to reflect the performing of the procedure by doing the following: (8 marks)
 
-- reset the patient status to ‘R’ (Recovery)
-- append (concatenate) the procedureNotes that were passed in as a parameter onto the end of existing patient notes (remember that the patient notes String should be structured in such a way that each entry
-is on a separate line - this is a similar process to that specified for recording of damage repair / traffic infringement details in stage 3 of assignment 1)
-- add the procedureLength that was passed in as a parameter to the total procedure time.
+    - reset the patient status to ‘R’ (Recovery)
+    - append (concatenate) the procedureNotes that were passed in as a parameter onto the end of existing patient notes (remember that the patient notes String should be structured in such a way that each entry is on a separate line - this is a similar process to that specified for recording of damage repair / traffic infringement details in stage 3 of assignment 1)
+    - add the procedureLength that was passed in as a parameter to the total procedure time.
 
 Once the Patient details have been updated in the manner described above a true value should be returned.
 
-8- Implement a method public double dischargePatient(), which records when a Patient has been discharged from the clinic. This method should start by checking to see if the patient status is not currently ‘R’ (Recovery) - if that is the case then the value Double.NaN (this is a constant in the predefined Double class) should be returned, otherwise the patient status should be updated to ‘D’ (Discharged)
-and the (final) invoice charge for the patient should be returned. (4 marks)
+8. Implement a method public double dischargePatient(), which records when a Patient has been discharged from the clinic. This method should start by checking to see if the patient status is not currently ‘R’ (Recovery) - if that is the case then the value Double.NaN (this is a constant in the predefined Double class) should be returned, otherwise the patient status should be updated to ‘D’ (Discharged) and the (final) invoice charge for the patient should be returned. (4 marks)
 
-9- Implement a method public void displayPatientRecord() , which displays all of the details of a Patient to the screen in a neat, formatted manner - this summary should include the following details:
+9. Implement a method public void displayPatientRecord() , which displays all of the details of a Patient to the screen in a neat, formatted manner - this summary should include the following details:
 
-- the patient number, patient name and patient status (note that the status should be displayed as “Scheduled”, “Admitted”, “Discharged”, etc)
-- the procedure date and procedure type (ie. 1, 2 or 3)
-- the doctor name and procedure length
-- the current total invoice charge (note: you will need to call the calculateInvoiceCharge() method here)
-- the patient notes
+    - the patient number, patient name and patient status (note that the status should be displayed as “Scheduled”, “Admitted”, “Discharged”, etc)
+    - the procedure date and procedure type (ie. 1, 2 or 3)
+    - the doctor name and procedure length
+    - the current total invoice charge (note: you will need to call the calculateInvoiceCharge() method here)
+    - the patient notes
 
 ## Stage 2 - Using the Patient class (50 marks)
 
@@ -81,17 +79,17 @@ You should note that each of the requirements below should be implemented /execu
 
 The description of the individual “features" you are required to implement in this application class begins below (these can all be done inside the main() method of your application class):
 
-1- Declare an array named patients that can store the references of up to five (5) Patient objects. (2 marks)
+1. Declare an array named patients that can store the references of up to five (5) Patient objects. (2 marks)
 
-2- Create five (5) Patient objects, passing in the values specified below to the constructor, and store the objects in the patients array. (5 marks)
+2. Create five (5) Patient objects, passing in the values specified below to the constructor, and store the objects in the patients array. (5 marks)
 
-3- Implement a basic feature which display the patient number, procedure date and doctor name for each Patient object stored in the array as shown below in the sample screenshot: (5 marks)
+3. Implement a basic feature which display the patient number, procedure date and doctor name for each Patient object stored in the array as shown below in the sample screenshot: (5 marks)
 
 ![Screenshot 2023-08-18 170148](https://github.com/Andrew-Sanger/University-Project-02/assets/74388624/02b5233f-3cac-4443-8458-917103c6e474)
 
 **Note: You must do this by using a loop to iterate through the patients array and then call the appropriate accessors for each object in the array in order to retrieve the required details, so that they can be printed to the screen as shown above. It is not acceptable to create an extra method which does the printing over in the Patient class and then call that method for each object here.**
 
-4- Implement another feature which allows the user to display the full history for a specified patient. This feature should prompt the user to enter the patient name they wish to search for and then display the procedure date, doctor name and patient notes for Patient records that are in the system for the specified patient name, as shown in the screen shot on the next page. (5 marks)
+4. Implement another feature which allows the user to display the full history for a specified patient. This feature should prompt the user to enter the patient name they wish to search for and then display the procedure date, doctor name and patient notes for Patient records that are in the system for the specified patient name, as shown in the screen shot on the next page. (5 marks)
 
 ![1](https://github.com/Andrew-Sanger/University-Project-02/assets/74388624/e0fbcf5e-f3e1-4787-9278-2c6d242a1cb7)
 
@@ -99,17 +97,16 @@ If no Patient records were found for the specified patient name then a suitable 
 
 ![2](https://github.com/Andrew-Sanger/University-Project-02/assets/74388624/f1c31b86-5c4b-4d89-be63-3c3836e19d8f)
 
-5- Implement a menu-driven patient tracking feature, which provides options that allow the user to admit a patient, record procedure details for a patient, discharge a patient and display a summary of all patient records in the system as described below:
+5. Implement a menu-driven patient tracking feature, which provides options that allow the user to admit a patient, record procedure details for a patient, discharge a patient and display a summary of all patient records in the system as described below:
 
-- **Patient Tracking System Menu** - This case-insensitive menu (ie. one that accepts both the lower case and upper case versions of each valid menu selection) should provide options to borrow a Patient, record a procedure for a Patient , discharge a patient, display all patient record details in the system and exit the menu. This menu feature should continue to display the available options and prompt the user to enter their selection until they choose the “Exit” option and the menu should display a suitable error message when the user enters an invalid selection. 
+    - **Patient Tracking System Menu** - This case-insensitive menu (ie. one that accepts both the lower case and upper case versions of each valid menu selection) should provide options to borrow a Patient, record a procedure for a Patient , discharge a patient, display all patient record details in the system and exit the menu. This menu feature should continue to display the available options and prompt the user to enter their selection until they choose the “Exit” option and the menu should display a suitable error message when the user enters an invalid selection. 
 
-- **Admit Patient Feature** - The “Admit Patient” feature should start off by prompting the user to enter the patient number of the Patient that is being admitted, after which it should search for a matching Patient object in the patients array. If a Patient object with the specified patient number was not found in the patients array then a suitable error message should be displayed to the screen. Otherwise if a Patient with the specified patient number was found in the patients array, then the program should attempt to call the admitPatient() method for the Patient object that was located earlier, check the result it returns and display a message indicating whether the attempt to admit the patient was successful or not.
+    - **Admit Patient Feature** - The “Admit Patient” feature should start off by prompting the user to enter the patient number of the Patient that is being admitted, after which it should search for a matching Patient object in the patients array. If a Patient object with the specified patient number was not found in the patients array then a suitable error message should be displayed to the screen. Otherwise if a Patient with the specified patient number was found in the patients array, then the program should attempt to call the admitPatient() method for the Patient object that was located earlier, check the result it returns and display a message indicating whether the attempt to admit the patient was successful or not.
 
-- **Record Procedure Feature** - The “Record Procedure” feature should start off by prompting the user to enter the patient number of the Patient that is being admitted, after which it should search for a matching Patient object in the patients array. If a Patient object with the specified patient number was not found in the patients array then a suitable error message should be displayed to the screen, otherwise if a Patient with the specified patient number was found in the patients array, then the program should proceed to prompt the user to enter the procedure description and procedure length
+    - **Record Procedure Feature** - The “Record Procedure” feature should start off by prompting the user to enter the patient number of the Patient that is being admitted, after which it should search for a matching Patient object in the patients array. If a Patient object with the specified patient number was not found in the patients array then a suitable error message should be displayed to the screen, otherwise if a Patient with the specified patient number was found in the patients array, then the program should proceed to prompt the user to enter the procedure description and procedure length
 (in hours). Once the required details have been entered by the user then the feature should attempt to call the recordProcedure() method for the Patient object that was located earlier (passing along the details entered by the user as parameters), check the result it returns and display a message indicating whether the attempt to record the procedure details for the patient was successful or not.
 
-- **Discharge Patient Feature** - The “Discharge Patient” feature should start off by prompting the user to enter the patient number of the Patient that is being discharged, after which it should search for a matching Patient object in the patients array. If a Patient object with the specified patient number was not found in the patients array then a suitable error message should be displayed to the screen, otherwise if a Patient with the specified patient number was found in the patients array, then the program should attempt to call the dischargePatient() method for the Patient object that was
-located earlier and trap the result (double value) that it returns. This result should be first checked to see if it was the “failure” signal (Double.NaN) - note that you cannot check for the value Double.NaN using the basic equality (‘==’) operator, so you will need to perform this check in a manner similar to that shown below:
+  - **Discharge Patient Feature** - The “Discharge Patient” feature should start off by prompting the user to enter the patient number of the Patient that is being discharged, after which it should search for a matching Patient object in the patients array. If a Patient object with the specified patient number was not found in the patients array then a suitable error message should be displayed to the screen, otherwise if a Patient with the specified patient number was found in the patients array, then the program should attempt to call the dischargePatient() method for the Patient object that was located earlier and trap the result (double value) that it returns. This result should be first checked to see if it was the “failure” signal (Double.NaN) - note that you cannot check for the value Double.NaN using the basic equality (‘==’) operator, so you will need to perform this check in a manner similar to that shown below:
 
 > double result = someMethod();
 > if (Double.isNaN(result) == true)
@@ -119,7 +116,7 @@ located earlier and trap the result (double value) that it returns. This result 
 
 If the result was not Double.NaN then you should print that result, which represents the final invoice charge for services rendered whilst the patient was admitted to the clinic, to the screen.
 
-- **Display All Patient Records feature** - This feature should print details for all of the Patient objects in the system by using a loop to iterate (step) through the patients array and invoking (calling) the displayPatientRecord() method for each Patient object in turn.
+  - **Display All Patient Records feature** - This feature should print details for all of the Patient objects in the system by using a loop to iterate (step) through the patients array and invoking (calling) the displayPatientRecord() method for each Patient object in turn.
 
 ## Coding Style (5 marks)
 
